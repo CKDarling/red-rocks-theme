@@ -1,45 +1,45 @@
 # Red Rocks — VS Code Theme
 
-A dark theme built from the **Ares Enyo** color palette: sienna, crimson and bronze sandstone on a midnight ink.
+Southern Utah after dark. Built from the **Ares Enyo** color palette (sienna, crimson and bronze on midnight ink), with syntax colors taken from the desert: Wingate rust, Navajo sandstone, sagebrush, juniper and a washed-out big sky.
 
 ![Red Rocks in VS Code, showing a Python file next to a legend of what each color is used for](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/showcase.png)
 
 ## Palette
 
-| Swatch                                                                                                  | Hex       | Role                                                                    |
-| ------------------------------------------------------------------------------------------------------- | --------- | ----------------------------------------------------------------------- |
-| ![16171f](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/16171f.png) | `#16171f` | Editor, sidebar and panel background (ink)                              |
-| ![3a3b3c](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/3a3b3c.png) | `#3a3b3c` | Current line, word highlights, indent guides, input borders (charcoal)  |
-| ![a0522d](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/a0522d.png) | `#a0522d` | Selection, button hover (sienna)                                        |
-| ![990000](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/990000.png) | `#990000` | Buttons, debugging status bar (crimson)                                 |
+| Swatch                                                                                                 | Hex       | Role                                                                         |
+| ------------------------------------------------------------------------------------------------------ | --------- | ---------------------------------------------------------------------------- |
+| ![16171f](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/16171f.png) | `#16171f` | Editor, sidebar and panel background (ink)                                   |
+| ![3a3b3c](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/3a3b3c.png) | `#3a3b3c` | Current line, word highlights, indent guides, input borders (charcoal)       |
+| ![a0522d](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/a0522d.png) | `#a0522d` | Selection, button hover (sienna)                                             |
+| ![990000](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/990000.png) | `#990000` | Buttons, debugging status bar (crimson)                                      |
 | ![c77926](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/c77926.png) | `#c77926` | Decorators, escapes, active borders, badges, find matches, warnings (bronze) |
 
 ## Derived Syntax Colors
 
-| Swatch                                                                                                  | Color        | Hex       | Used for                                                                               |
-| ------------------------------------------------------------------------------------------------------- | ------------ | --------- | -------------------------------------------------------------------------------------- |
-| ![e2d8c9](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/e2d8c9.png) | Bone         | `#e2d8c9` | Foreground text, variables                                                             |
-| ![7c7f88](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/7c7f88.png) | Ash          | `#7c7f88` | Comments, line numbers, inactive tabs, muted UI                                        |
-| ![aab47e](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/aab47e.png) | Sage         | `#aab47e` | Strings, docstrings                                                                    |
-| ![df6a5f](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/df6a5f.png) | Brick        | `#df6a5f` | Keywords, control flow, `global` / `nonlocal`, exceptions, CSS at-rules                |
-| ![86aed0](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/86aed0.png) | Sky          | `#86aed0` | Functions, HTML tags, links                                                            |
-| ![6fb5a8](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/6fb5a8.png) | Turquoise    | `#6fb5a8` | Builtins, builtin types (`int`, `str`, `list`), type hints, `__name__`, CSS properties |
-| ![e6c08e](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/e6c08e.png) | Sandstone    | `#e6c08e` | Classes, headings, HTML attribute values                                               |
-| ![b19cd4](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/b19cd4.png) | Dusk         | `#b19cd4` | Numbers, enum members, CSS colors and units                                            |
-| ![de8a62](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/de8a62.png) | Terracotta   | `#de8a62` | `True` / `False` / `None`, `ALL_CAPS` constants, read-only values                      |
-| ![c4919e](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/c4919e.png) | Prickly pear | `#c4919e` | `self` / `cls`, CSS pseudo-classes                                                     |
-| ![9aa6bc](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/9aa6bc.png) | Ash blue     | `#9aa6bc` | CSS / SCSS variables                                                                   |
+| Swatch                                                                                                 | Color            | Hex       | Used for                                                                               |
+| ------------------------------------------------------------------------------------------------------ | ---------------- | --------- | -------------------------------------------------------------------------------------- |
+| ![ddd2c0](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/ddd2c0.png) | Bone             | `#ddd2c0` | Foreground text, variables                                                             |
+| ![857c74](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/857c74.png) | Shale            | `#857c74` | Comments, line numbers, inactive tabs, muted UI                                        |
+| ![a9ab86](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/a9ab86.png) | Sagebrush        | `#a9ab86` | Strings, docstrings                                                                    |
+| ![cf6e52](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/cf6e52.png) | Wingate rust     | `#cf6e52` | Keywords, control flow, `global` / `nonlocal`, exceptions, CSS at-rules                |
+| ![93a8b6](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/93a8b6.png) | Big sky          | `#93a8b6` | Functions, HTML tags, links                                                            |
+| ![86a195](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/86a195.png) | Juniper          | `#86a195` | Builtins, builtin types (`int`, `str`, `list`), type hints, `__name__`, CSS properties |
+| ![d8bc92](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/d8bc92.png) | Navajo sandstone | `#d8bc92` | Classes, headings, HTML attribute values                                               |
+| ![b98e9e](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/b98e9e.png) | Dusk             | `#b98e9e` | Numbers, enum members, CSS colors and units                                            |
+| ![d9967a](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/d9967a.png) | Coral sand       | `#d9967a` | `True` / `False` / `None`, `ALL_CAPS` constants, read-only values                      |
+| ![c2a89c](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/c2a89c.png) | Slickrock        | `#c2a89c` | `self` / `cls`, CSS pseudo-classes                                                     |
+| ![a2adb4](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/a2adb4.png) | Haze             | `#a2adb4` | CSS / SCSS variables                                                                   |
 
 Decorators, f-string braces, escape sequences and HTML attributes use bronze `#c77926` straight from the palette.
 
 ## Git Colors
 
-| Swatch                                                                                                  | Hex       | Used for          |
-| ------------------------------------------------------------------------------------------------------- | --------- | ----------------- |
-| ![8fa36f](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/8fa36f.png) | `#8fa36f` | Added / untracked |
-| ![9aa6bc](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/9aa6bc.png) | `#9aa6bc` | Modified          |
-| ![cf5a50](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/cf5a50.png) | `#cf5a50` | Deleted           |
-| ![a48cbf](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/a48cbf.png) | `#a48cbf` | Conflicts         |
+| Swatch                                                                                                 | Hex       | Used for          |
+| ------------------------------------------------------------------------------------------------------ | --------- | ----------------- |
+| ![929a74](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/929a74.png) | `#929a74` | Added / untracked |
+| ![a2adb4](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/a2adb4.png) | `#a2adb4` | Modified          |
+| ![c0604a](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/c0604a.png) | `#c0604a` | Deleted           |
+| ![a5899a](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/a5899a.png) | `#a5899a` | Conflicts         |
 
 ## Install
 

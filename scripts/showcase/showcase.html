@@ -14,8 +14,8 @@
     --page: #0f1016;
     --editor: #16171f;
     --hairline: #ffffff22;
-    --text: #e2d8c9;
-    --muted: #959099;
+    --text: #ddd2c0;
+    --muted: #9a9087;
     --accent: #c77926;
     --font-display: "Bricolage Grotesque", "Avenir Next", sans-serif;
     --font-body: "IBM Plex Sans", "Helvetica Neue", sans-serif;
@@ -56,12 +56,12 @@
     color: var(--text);
   }
   .dot { width: 12px; height: 12px; border-radius: 50%; }
-  .titlebar .name { position: absolute; left: 0; right: 0; text-align: center; color: #7c7f8888; }
+  .titlebar .name { position: absolute; left: 0; right: 0; text-align: center; color: #857c7488; }
   .tabs { display: flex; border-bottom: 1px solid var(--hairline); font-size: 13px; }
   .tab { display: flex; align-items: center; gap: 8px; padding: 0 16px; border-right: 1px solid var(--hairline); }
   .tab.active { border-top: 1px solid var(--accent); }
-  .tab.inactive { color: #7c7f8899; }
-  .py { width: 10px; height: 10px; border-radius: 2px; background: linear-gradient(135deg, #86aed0 50%, #e6c08e 50%); }
+  .tab.inactive { color: #857c7499; }
+  .py { width: 10px; height: 10px; border-radius: 2px; background: linear-gradient(135deg, #93a8b6 50%, #d8bc92 50%); }
 
   .code {
     padding-block: 12px;
@@ -72,10 +72,10 @@
   }
   .ln { display: flex; white-space: pre; }
   .ln.cur { background: #3a3b3c55; }
-  .gutter { flex: none; width: 52px; padding-right: 20px; text-align: right; color: #7c7f8880; }
-  .ln.cur .gutter { color: #e2d8c9; }
+  .gutter { flex: none; width: 52px; padding-right: 20px; text-align: right; color: #857c7480; }
+  .ln.cur .gutter { color: #ddd2c0; }
   .sel { background: #a0522d66; }
-  .caret { display: inline-block; width: 2px; height: 17px; margin-left: 1px; vertical-align: -3px; background: #e2d8c9; }
+  .caret { display: inline-block; width: 2px; height: 17px; margin-left: 1px; vertical-align: -3px; background: #ddd2c0; }
 
   .status {
     display: flex;
@@ -84,7 +84,7 @@
     padding: 0 12px;
     border-top: 1px solid var(--hairline);
     font-size: 11.5px;
-    color: #e2d8c9cc;
+    color: #ddd2c0cc;
   }
   .status .right { margin-left: auto; display: flex; gap: 18px; }
   .remote { padding: 0 10px; height: 100%; display: flex; align-items: center; background: #c77926; color: #16171f; margin-left: -12px; font-weight: 500; }
@@ -115,9 +115,9 @@
 <body>
   <section class="window">
     <div class="titlebar">
-      <span class="dot" style="background:#cf5a50"></span>
+      <span class="dot" style="background:#c0604a"></span>
       <span class="dot" style="background:#c77926"></span>
-      <span class="dot" style="background:#8fa36f"></span>
+      <span class="dot" style="background:#929a74"></span>
       <span class="name">tickets.py — red-rocks-theme</span>
     </div>
     <div class="tabs">
@@ -136,22 +136,22 @@
     <div>
       <div class="eyebrow">VS Code theme</div>
       <h1>Red Rocks</h1>
-      <p class="sub">A dark theme in sienna, crimson and bronze on midnight ink, with a distinct color for every part of a Python file.</p>
+      <p class="sub">Southern Utah after dark: sandstone, sagebrush and juniper under a midnight sky, with a distinct color for every part of a Python file.</p>
     </div>
     <div class="legend" id="legend"></div>
   </aside>
 
 <script>
 const STYLE = {
-  kw: ["#df6a5f"], ctrl: ["#df6a5f", "b"], stor: ["#df6a5f"], fpre: ["#df6a5f"], glob: ["#df6a5f"],
-  fn: ["#86aed0"], bi: ["#6fb5a8"], type: ["#6fb5a8"], magic: ["#6fb5a8", "i"],
-  cls: ["#e6c08e"], clsdef: ["#e6c08e", "b"],
+  kw: ["#cf6e52"], ctrl: ["#cf6e52", "b"], stor: ["#cf6e52"], fpre: ["#cf6e52"], glob: ["#cf6e52"],
+  fn: ["#93a8b6"], bi: ["#86a195"], type: ["#86a195"], magic: ["#86a195", "i"],
+  cls: ["#d8bc92"], clsdef: ["#d8bc92", "b"],
   dec: ["#c77926", "i"], fb: ["#c77926"], esc: ["#c77926"],
-  str: ["#aab47e"], doc: ["#aab47e", "i"],
-  num: ["#b19cd4"], const: ["#de8a62", "b"], caps: ["#de8a62"],
-  self: ["#c4919e", "i"], cmt: ["#7c7f88", "i"],
-  param: ["#e2d8c9dd"], attr: ["#e2d8c9cc"], op: ["#e2d8c9bb"], punc: ["#e2d8c9aa"],
-  mod: ["#e2d8c9"], v: ["#e2d8c9"],
+  str: ["#a9ab86"], doc: ["#a9ab86", "i"],
+  num: ["#b98e9e"], const: ["#d9967a", "b"], caps: ["#d9967a"],
+  self: ["#c2a89c", "i"], cmt: ["#857c74", "i"],
+  param: ["#ddd2c0dd"], attr: ["#ddd2c0cc"], op: ["#ddd2c0bb"], punc: ["#ddd2c0aa"],
+  mod: ["#ddd2c0"], v: ["#ddd2c0"],
 };
 
 // «kind:text» is a token, «!kind:text» sits inside the selection; unmarked text is a plain name.
@@ -196,17 +196,17 @@ const CURSOR_LINE = 20;
 
 // role, chip color, sample tokens (same markup), hex label
 const LEGEND = [
-  ["Keywords", "#df6a5f", "«stor:def»  «ctrl:if»  «ctrl:return»  «glob:global»", "#df6a5f"],
-  ["Functions", "#86aed0", "«fn:summarize»«punc:()»  «fn:total»«punc:()»", "#86aed0"],
-  ["Strings", "#aab47e", "«str:\"rocks\"»  «doc:\"\"\"docs\"\"\"»", "#aab47e"],
-  ["Comments", "#7c7f88", "«cmt:# ten percent off»", "#7c7f88"],
-  ["Builtins & types", "#6fb5a8", "«bi:len»  «type:int»  «type:str»  «magic:__name__»", "#6fb5a8"],
-  ["Classes", "#e6c08e", "«clsdef:Ticket»  «cls:Ticket»«punc:()»", "#e6c08e"],
+  ["Keywords", "#cf6e52", "«stor:def»  «ctrl:if»  «ctrl:return»  «glob:global»", "#cf6e52"],
+  ["Functions", "#93a8b6", "«fn:summarize»«punc:()»  «fn:total»«punc:()»", "#93a8b6"],
+  ["Strings", "#a9ab86", "«str:\"rocks\"»  «doc:\"\"\"docs\"\"\"»", "#a9ab86"],
+  ["Comments", "#857c74", "«cmt:# ten percent off»", "#857c74"],
+  ["Builtins & types", "#86a195", "«bi:len»  «type:int»  «type:str»  «magic:__name__»", "#86a195"],
+  ["Classes", "#d8bc92", "«clsdef:Ticket»  «cls:Ticket»«punc:()»", "#d8bc92"],
   ["Decorators & escapes", "#c77926", "«dec:@dataclass»  «fb:{»t«fb:}»  «esc:\\n»", "#c77926"],
-  ["Numbers", "#b19cd4", "«num:8500»  «num:0.9»", "#b19cd4"],
-  ["Constants", "#de8a62", "«const:True»  «const:None»  «caps:MAX_RETRIES»", "#de8a62"],
-  ["self / cls", "#c4919e", "«self:self»«punc:.»«attr:seats»", "#c4919e"],
-  ["Names", "#e2d8c9", "data  lines  «param:price»", "#e2d8c9"],
+  ["Numbers", "#b98e9e", "«num:8500»  «num:0.9»", "#b98e9e"],
+  ["Constants", "#d9967a", "«const:True»  «const:None»  «caps:MAX_RETRIES»", "#d9967a"],
+  ["self / cls", "#c2a89c", "«self:self»«punc:.»«attr:seats»", "#c2a89c"],
+  ["Names", "#ddd2c0", "data  lines  «param:price»", "#ddd2c0"],
 ];
 const SURFACES = [
   ["Current line", "#3a3b3c", "#3a3b3c55"],
@@ -266,7 +266,7 @@ SURFACES.forEach(([role, chip, hex], i) => {
   const s = el("span", "sample");
   const bar = el("span", null, i === 0 ? "  if self.seats >= 10:  " : "self.seats * price");
   bar.style.background = hex;
-  bar.style.color = "#e2d8c9";
+  bar.style.color = "#ddd2c0";
   s.append(bar);
   row.append(c, el("span", "role", role), s, el("span", "hex", hex));
   legend.append(row);
