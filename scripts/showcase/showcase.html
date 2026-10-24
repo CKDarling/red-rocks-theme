@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  Source for images/showcase.png. The code mirrors examples/tickets.py, hand-tokenized
+  Source for images/showcase.png. The code mirrors examples/sunflower.py, hand-tokenized
   with the colors Red Rocks gives each scope (Pylance semantic colors where they win).
   Rebuild with: scripts/render_showcase.sh
 -->
@@ -67,7 +67,7 @@
     padding-block: 12px;
     font-family: var(--font-code);
     font-size: 13.5px;
-    line-height: 21px;
+    line-height: 19px;
     font-variant-ligatures: none;
   }
   .ln { display: flex; white-space: pre; }
@@ -75,7 +75,7 @@
   .gutter { flex: none; width: 52px; padding-right: 20px; text-align: right; color: #7d746d80; }
   .ln.cur .gutter { color: #cac1b2; }
   .sel { background: #a0522d66; }
-  .caret { display: inline-block; width: 2px; height: 17px; margin-left: 1px; vertical-align: -3px; background: #cac1b2; }
+  .caret { display: inline-block; width: 2px; height: 15px; margin-left: 1px; vertical-align: -3px; background: #cac1b2; }
 
   .status {
     display: flex;
@@ -118,16 +118,16 @@
       <span class="dot" style="background:#bd5a4c"></span>
       <span class="dot" style="background:#c77926"></span>
       <span class="dot" style="background:#768451"></span>
-      <span class="name">tickets.py — red-rocks-theme</span>
+      <span class="name">sunflower.py — red-rocks-theme</span>
     </div>
     <div class="tabs">
-      <span class="tab active"><span class="py"></span>tickets.py</span>
+      <span class="tab active"><span class="py"></span>sunflower.py</span>
       <span class="tab inactive">README.md</span>
     </div>
     <div class="code" id="code"></div>
     <div class="status">
       <span class="remote">main</span>
-      <span>Ln 20, Col 29</span>
+      <span>Ln 32, Col 70</span>
       <div class="right"><span>Spaces: 4</span><span>UTF-8</span><span>Python 3.12</span></div>
     </div>
   </section>
@@ -161,52 +161,55 @@ const SRC = [
   "«kw:import» «mod:json»",
   "«kw:from» «mod:dataclasses» «kw:import» «fn:dataclass»",
   "",
-  "«caps:MAX_RETRIES» «op:=» «num:3»  «cmt:# give up after three attempts»",
-  "_cache«punc::» «type:dict»«punc:[»«type:str»«punc:,» «type:int»«punc:]» «op:=» «punc:{}»",
+  "«caps:LUCAS_SEED» «op:=» «punc:(»«num:2»«punc:,» «num:1»«punc:)»  «cmt:# Fibonacci's sibling: 2, 1, 3, 4, 7, 11, ...»",
+  "_checked«punc::» «type:int» «op:=» «num:0»",
+  "",
+  "",
+  "«stor:def» «fn:is_prime»«punc:(»«param:n»«punc::» «type:int»«punc:)» «op:->» «type:bool»«punc::»",
+  "    «glob:global» _checked",
+  "    _checked «op:+=» «num:1»",
+  "    «ctrl:return» «param:n» «op:>» «num:1» «op:and» «bi:all»«punc:(»«param:n» «op:%» d «ctrl:for» d «ctrl:in» «bi:range»«punc:(»«num:2»«punc:,» «type:int»«punc:(»«param:n»«op:**»«num:0.5»«punc:)» «op:+» «num:1»«punc:))»",
   "",
   "",
   "«dec:@dataclass»«punc:(»«param:frozen»«op:=»«const:True»«punc:)»",
-  "«stor:class» «clsdef:Ticket»«punc::»",
-  "    «doc:\"\"\"A block of concert seats, priced in cents.\"\"\"»",
+  "«stor:class» «clsdef:Sunflower»«punc::»",
+  "    «doc:\"\"\"A seed head whose spirals count out the Lucas numbers.\"\"\"»",
   "",
   "    name«punc::» «type:str»",
-  "    seats«punc::» «type:int» «op:=» «num:1»",
+  "    spirals«punc::» «type:int» «op:=» «num:47»",
   "    note«punc::» «type:str» «op:|» «const:None» «op:=» «const:None»",
   "",
-  "    «stor:def» «fn:total»«punc:(»«self:self»«punc:,» «param:price»«punc::» «type:int» «op:=» «num:8500»«punc:)» «op:->» «type:int»«punc::»",
-  "        «cmt:# Group sales get ten percent off»",
-  "        «ctrl:if» «self:self»«punc:.»«attr:seats» «op:>=» «num:10»«punc::»",
-  "            «ctrl:return» «type:int»«punc:(»«self:self»«punc:.»«attr:seats» «op:*» «param:price» «op:*» «num:0.9»«punc:)»",
-  "        «ctrl:return» «!self:self»«!punc:.»«!attr:seats»«!op: * »«!param:price»",
+  "    «stor:def» «fn:lucas»«punc:(»«self:self»«punc:)» «op:->» «type:list»«punc:[»«type:int»«punc:]»«punc::»",
+  "        seq «op:=» «bi:list»«punc:(»«caps:LUCAS_SEED»«punc:)»",
+  "        «ctrl:while» seq«punc:[»«op:-»«num:1»«punc:]» «op:<» «self:self»«punc:.»«attr:spirals»«punc::»",
+  "            seq«punc:.»«fn:append»«punc:(»seq«punc:[»«op:-»«num:1»«punc:]» «op:+» seq«punc:[»«op:-»«num:2»«punc:])»",
+  "        «ctrl:return» seq",
   "",
-  "",
-  "«stor:def» «fn:summarize»«punc:(»«param:tickets»«punc::» «type:list»«punc:[»«cls:Ticket»«punc:])» «op:->» «type:str»«punc::»",
-  "    «glob:global» _cache",
-  "    lines «op:=» «punc:[»«fpre:f»«str:\"»«fb:{»t«punc:.»«attr:name»«fb:}»«esc:\\t»«fb:{»t«punc:.»«fn:total»«punc:()»«fb:}»«str:\"» «ctrl:for» t «ctrl:in» «param:tickets»«punc:]»",
-  "    data «op:=» «punc:{»«str:\"venue\"»«punc::» «str:\"Red Rocks\"»«punc:,» «str:\"count\"»«punc::» «bi:len»«punc:(»«param:tickets»«punc:)}»",
-  "    «bi:print»«punc:(»data«punc:[»«str:\"venue\"»«punc:],» data«punc:[»«str:\"count\"»«punc:]» «op:>» «num:0»«punc:)»",
-  "    «ctrl:return» «str:\"»«esc:\\n»«str:\"»«punc:.»«fn:join»«punc:(»lines«punc:)»",
+  "    «stor:def» «fn:is_safe_prime»«punc:(»«self:self»«punc:)» «op:->» «type:bool»«punc::»",
+  "        «cmt:# 47 = 2 * 23 + 1, and 23 is prime as well»",
+  "        «ctrl:return» «fn:is_prime»«punc:(»«self:self»«punc:.»«attr:spirals»«punc:)» «op:and» «fn:is_prime»«punc:((»«!self:self»«!punc:.»«!attr:spirals»«!op: - »«!num:1»«punc:)» «op:/»«op:/» «num:2»«punc:)»",
   "",
   "",
   "«ctrl:if» «magic:__name__» «op:==» «str:\"__main__\"»«punc::»",
-  "    «bi:print»«punc:(»«fn:summarize»«punc:([»«cls:Ticket»«punc:(»«str:\"Ada\"»«punc:,» «param:seats»«op:=»«num:12»«punc:)]))»",
-  "    «bi:print»«punc:(»«mod:json»«punc:.»«fn:dumps»«punc:({»«str:\"retries\"»«punc::» «caps:MAX_RETRIES»«punc:}))»",
+  "    head «op:=» «cls:Sunflower»«punc:(»«str:\"Helianthus\"»«punc:)»",
+  "    «bi:print»«punc:(»«fpre:f»«str:\"»«fb:{»head«punc:.»«attr:name»«fb:}»«esc:\\t»«fb:{»head«punc:.»«fn:lucas»«punc:()»«fb:}»«str:\"»«punc:)»",
+  "    «bi:print»«punc:(»«mod:json»«punc:.»«fn:dumps»«punc:({»«str:\"safe\"»«punc::» head«punc:.»«fn:is_safe_prime»«punc:(),» «str:\"checks\"»«punc::» _checked«punc:}))»",
 ];
-const CURSOR_LINE = 20;
+const CURSOR_LINE = 32;
 
 // role, chip color, sample tokens (same markup), hex label
 const LEGEND = [
-  ["Keywords", "#cc6550", "«stor:def»  «ctrl:if»  «ctrl:return»  «glob:global»", "#cc6550"],
-  ["Functions", "#7395ab", "«fn:summarize»«punc:()»  «fn:total»«punc:()»", "#7395ab"],
-  ["Strings", "#909465", "«str:\"rocks\"»  «doc:\"\"\"docs\"\"\"»", "#909465"],
-  ["Comments", "#7d746d", "«cmt:# ten percent off»", "#7d746d"],
+  ["Keywords", "#cc6550", "«stor:def»  «ctrl:while»  «ctrl:return»  «glob:global»", "#cc6550"],
+  ["Functions", "#7395ab", "«fn:is_prime»«punc:()»  «fn:lucas»«punc:()»", "#7395ab"],
+  ["Strings", "#909465", "«str:\"Helianthus\"»  «doc:\"\"\"docs\"\"\"»", "#909465"],
+  ["Comments", "#7d746d", "«cmt:# 47 = 2 * 23 + 1»", "#7d746d"],
   ["Builtins & types", "#679082", "«bi:len»  «type:int»  «type:str»  «magic:__name__»", "#679082"],
-  ["Classes", "#c9a371", "«clsdef:Ticket»  «cls:Ticket»«punc:()»", "#c9a371"],
-  ["Decorators & escapes", "#c77926", "«dec:@dataclass»  «fb:{»t«fb:}»  «esc:\\n»", "#c77926"],
-  ["Numbers", "#a67a8c", "«num:8500»  «num:0.9»", "#a67a8c"],
-  ["Constants", "#cb7e80", "«const:True»  «const:None»  «caps:MAX_RETRIES»", "#cb7e80"],
-  ["self / cls", "#9c8371", "«self:self»«punc:.»«attr:seats»", "#9c8371"],
-  ["Names", "#cac1b2", "data  lines  «param:price»", "#cac1b2"],
+  ["Classes", "#c9a371", "«clsdef:Sunflower»  «cls:Sunflower»«punc:()»", "#c9a371"],
+  ["Decorators & escapes", "#c77926", "«dec:@dataclass»  «fb:{»head«fb:}»  «esc:\\n»", "#c77926"],
+  ["Numbers", "#a67a8c", "«num:47»  «num:0.5»", "#a67a8c"],
+  ["Constants", "#cb7e80", "«const:True»  «const:None»  «caps:LUCAS_SEED»", "#cb7e80"],
+  ["self / cls", "#9c8371", "«self:self»«punc:.»«attr:spirals»", "#9c8371"],
+  ["Names", "#cac1b2", "head  seq  «param:n»", "#cac1b2"],
 ];
 const SURFACES = [
   ["Current line", "#3a3b3c", "#3a3b3c55"],
@@ -264,7 +267,7 @@ SURFACES.forEach(([role, chip, hex], i) => {
   const row = el("div", "row" + (i === 0 ? " group" : ""));
   const c = el("span", "chip"); c.style.background = chip;
   const s = el("span", "sample");
-  const bar = el("span", null, i === 0 ? "  if self.seats >= 10:  " : "self.seats * price");
+  const bar = el("span", null, i === 0 ? "  while seq[-1] < n:  " : "self.spirals - 1");
   bar.style.background = hex;
   bar.style.color = "#cac1b2";
   s.append(bar);
