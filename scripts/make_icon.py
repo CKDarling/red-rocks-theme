@@ -20,8 +20,8 @@ def hexrgb(h):
 
 BG_TOP, BG_BOTTOM = hexrgb("#1f2130"), hexrgb("#101118")
 SIENNA, CRIMSON, BRONZE = hexrgb("#a0522d"), hexrgb("#990000"), hexrgb("#c77926")
-CHARCOAL, BONE, SANDSTONE = hexrgb("#3a3b3c"), hexrgb("#ddd2c0"), hexrgb("#d8bc92")
-WAVES = [("#cf6e52", 26), ("#a9ab86", 42), ("#93a8b6", 58)]  # rust, sagebrush, big sky
+CHARCOAL, BONE, SANDSTONE = hexrgb("#3a3b3c"), hexrgb("#cac1b2"), hexrgb("#c9a371")
+WAVES = [("#cc6550", 26), ("#909465", 42), ("#7395ab", 58)]  # rust, sagebrush, big sky
 STAGE = (128, 210)
 STARS = [(46, 46, 1.6), (84, 30, 1.2), (122, 56, 1.4), (150, 30, 1.0), (106, 84, 1.0), (60, 76, 1.0), (214, 112, 1.2)]
 
