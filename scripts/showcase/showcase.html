@@ -1,0 +1,276 @@
+<!doctype html>
+<!--
+  Source for images/showcase.png. The code mirrors examples/tickets.py, hand-tokenized
+  with the colors Red Rocks gives each scope (Pylance semantic colors where they win).
+  Rebuild with: scripts/render_showcase.sh
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Red Rocks Showcase</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500&family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=block">
+<style>
+  :root {
+    --page: #0f1016;
+    --editor: #16171f;
+    --hairline: #ffffff22;
+    --text: #e2d8c9;
+    --muted: #959099;
+    --accent: #c77926;
+    --font-display: "Bricolage Grotesque", "Avenir Next", sans-serif;
+    --font-body: "IBM Plex Sans", "Helvetica Neue", sans-serif;
+    --font-code: "JetBrains Mono", "SF Mono", Menlo, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    width: 1280px;
+    height: 940px;
+    padding: 40px;
+    background: var(--page);
+    color: var(--text);
+    font-family: var(--font-body);
+    display: grid;
+    grid-template-columns: 700px 1fr;
+    gap: 40px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .window {
+    display: grid;
+    grid-template-rows: 36px 36px 1fr 24px;
+    background: var(--editor);
+    border: 1px solid var(--hairline);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 24px 60px #00000066;
+  }
+  .titlebar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-left: 14px;
+    border-bottom: 1px solid var(--hairline);
+    position: relative;
+    font-size: 12px;
+    color: var(--text);
+  }
+  .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .titlebar .name { position: absolute; left: 0; right: 0; text-align: center; color: #7c7f8888; }
+  .tabs { display: flex; border-bottom: 1px solid var(--hairline); font-size: 13px; }
+  .tab { display: flex; align-items: center; gap: 8px; padding: 0 16px; border-right: 1px solid var(--hairline); }
+  .tab.active { border-top: 1px solid var(--accent); }
+  .tab.inactive { color: #7c7f8899; }
+  .py { width: 10px; height: 10px; border-radius: 2px; background: linear-gradient(135deg, #86aed0 50%, #e6c08e 50%); }
+
+  .code {
+    padding-block: 12px;
+    font-family: var(--font-code);
+    font-size: 13.5px;
+    line-height: 21px;
+    font-variant-ligatures: none;
+  }
+  .ln { display: flex; white-space: pre; }
+  .ln.cur { background: #3a3b3c55; }
+  .gutter { flex: none; width: 52px; padding-right: 20px; text-align: right; color: #7c7f8880; }
+  .ln.cur .gutter { color: #e2d8c9; }
+  .sel { background: #a0522d66; }
+  .caret { display: inline-block; width: 2px; height: 17px; margin-left: 1px; vertical-align: -3px; background: #e2d8c9; }
+
+  .status {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 0 12px;
+    border-top: 1px solid var(--hairline);
+    font-size: 11.5px;
+    color: #e2d8c9cc;
+  }
+  .status .right { margin-left: auto; display: flex; gap: 18px; }
+  .remote { padding: 0 10px; height: 100%; display: flex; align-items: center; background: #c77926; color: #16171f; margin-left: -12px; font-weight: 500; }
+
+  aside { display: grid; align-content: start; gap: 22px; padding-top: 6px; }
+  .eyebrow { font-family: var(--font-code); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+  h1 { margin: 6px 0 0; font-family: var(--font-display); font-weight: 700; font-size: 40px; line-height: 1.05; letter-spacing: -0.01em; }
+  .sub { margin: 8px 0 0; color: var(--muted); font-size: 15px; line-height: 1.5; text-wrap: balance; }
+
+  .legend { display: grid; gap: 0; }
+  .row {
+    display: grid;
+    grid-template-columns: 16px 150px 1fr auto;
+    align-items: center;
+    gap: 14px;
+    height: 46px;
+    border-top: 1px solid #ffffff12;
+    font-size: 14px;
+  }
+  .row:last-child { border-bottom: 1px solid #ffffff12; }
+  .chip { width: 16px; height: 16px; border-radius: 4px; border: 1px solid #ffffff22; }
+  .role { color: var(--text); }
+  .sample { font-family: var(--font-code); font-size: 13px; white-space: pre; overflow: hidden; font-variant-ligatures: none; }
+  .hex { font-family: var(--font-code); font-size: 12px; color: var(--muted); }
+  .group { margin-top: 10px; }
+</style>
+</head>
+<body>
+  <section class="window">
+    <div class="titlebar">
+      <span class="dot" style="background:#cf5a50"></span>
+      <span class="dot" style="background:#c77926"></span>
+      <span class="dot" style="background:#8fa36f"></span>
+      <span class="name">tickets.py — red-rocks-theme</span>
+    </div>
+    <div class="tabs">
+      <span class="tab active"><span class="py"></span>tickets.py</span>
+      <span class="tab inactive">README.md</span>
+    </div>
+    <div class="code" id="code"></div>
+    <div class="status">
+      <span class="remote">main</span>
+      <span>Ln 20, Col 29</span>
+      <div class="right"><span>Spaces: 4</span><span>UTF-8</span><span>Python 3.12</span></div>
+    </div>
+  </section>
+
+  <aside>
+    <div>
+      <div class="eyebrow">VS Code theme</div>
+      <h1>Red Rocks</h1>
+      <p class="sub">A dark theme in sienna, crimson and bronze on midnight ink, with a distinct color for every part of a Python file.</p>
+    </div>
+    <div class="legend" id="legend"></div>
+  </aside>
+
+<script>
+const STYLE = {
+  kw: ["#df6a5f"], ctrl: ["#df6a5f", "b"], stor: ["#df6a5f"], fpre: ["#df6a5f"], glob: ["#df6a5f"],
+  fn: ["#86aed0"], bi: ["#6fb5a8"], type: ["#6fb5a8"], magic: ["#6fb5a8", "i"],
+  cls: ["#e6c08e"], clsdef: ["#e6c08e", "b"],
+  dec: ["#c77926", "i"], fb: ["#c77926"], esc: ["#c77926"],
+  str: ["#aab47e"], doc: ["#aab47e", "i"],
+  num: ["#b19cd4"], const: ["#de8a62", "b"], caps: ["#de8a62"],
+  self: ["#c4919e", "i"], cmt: ["#7c7f88", "i"],
+  param: ["#e2d8c9dd"], attr: ["#e2d8c9cc"], op: ["#e2d8c9bb"], punc: ["#e2d8c9aa"],
+  mod: ["#e2d8c9"], v: ["#e2d8c9"],
+};
+
+// «kind:text» is a token, «!kind:text» sits inside the selection; unmarked text is a plain name.
+const SRC = [
+  "«kw:from» «mod:__future__» «kw:import» annotations",
+  "",
+  "«kw:import» «mod:json»",
+  "«kw:from» «mod:dataclasses» «kw:import» «fn:dataclass»",
+  "",
+  "«caps:MAX_RETRIES» «op:=» «num:3»  «cmt:# give up after three attempts»",
+  "_cache«punc::» «type:dict»«punc:[»«type:str»«punc:,» «type:int»«punc:]» «op:=» «punc:{}»",
+  "",
+  "",
+  "«dec:@dataclass»«punc:(»«param:frozen»«op:=»«const:True»«punc:)»",
+  "«stor:class» «clsdef:Ticket»«punc::»",
+  "    «doc:\"\"\"A block of concert seats, priced in cents.\"\"\"»",
+  "",
+  "    name«punc::» «type:str»",
+  "    seats«punc::» «type:int» «op:=» «num:1»",
+  "    note«punc::» «type:str» «op:|» «const:None» «op:=» «const:None»",
+  "",
+  "    «stor:def» «fn:total»«punc:(»«self:self»«punc:,» «param:price»«punc::» «type:int» «op:=» «num:8500»«punc:)» «op:->» «type:int»«punc::»",
+  "        «cmt:# Group sales get ten percent off»",
+  "        «ctrl:if» «self:self»«punc:.»«attr:seats» «op:>=» «num:10»«punc::»",
+  "            «ctrl:return» «type:int»«punc:(»«self:self»«punc:.»«attr:seats» «op:*» «param:price» «op:*» «num:0.9»«punc:)»",
+  "        «ctrl:return» «!self:self»«!punc:.»«!attr:seats»«!op: * »«!param:price»",
+  "",
+  "",
+  "«stor:def» «fn:summarize»«punc:(»«param:tickets»«punc::» «type:list»«punc:[»«cls:Ticket»«punc:])» «op:->» «type:str»«punc::»",
+  "    «glob:global» _cache",
+  "    lines «op:=» «punc:[»«fpre:f»«str:\"»«fb:{»t«punc:.»«attr:name»«fb:}»«esc:\\t»«fb:{»t«punc:.»«fn:total»«punc:()»«fb:}»«str:\"» «ctrl:for» t «ctrl:in» «param:tickets»«punc:]»",
+  "    data «op:=» «punc:{»«str:\"venue\"»«punc::» «str:\"Red Rocks\"»«punc:,» «str:\"count\"»«punc::» «bi:len»«punc:(»«param:tickets»«punc:)}»",
+  "    «bi:print»«punc:(»data«punc:[»«str:\"venue\"»«punc:],» data«punc:[»«str:\"count\"»«punc:]» «op:>» «num:0»«punc:)»",
+  "    «ctrl:return» «str:\"»«esc:\\n»«str:\"»«punc:.»«fn:join»«punc:(»lines«punc:)»",
+  "",
+  "",
+  "«ctrl:if» «magic:__name__» «op:==» «str:\"__main__\"»«punc::»",
+  "    «bi:print»«punc:(»«fn:summarize»«punc:([»«cls:Ticket»«punc:(»«str:\"Ada\"»«punc:,» «param:seats»«op:=»«num:12»«punc:)]))»",
+  "    «bi:print»«punc:(»«mod:json»«punc:.»«fn:dumps»«punc:({»«str:\"retries\"»«punc::» «caps:MAX_RETRIES»«punc:}))»",
+];
+const CURSOR_LINE = 20;
+
+// role, chip color, sample tokens (same markup), hex label
+const LEGEND = [
+  ["Keywords", "#df6a5f", "«stor:def»  «ctrl:if»  «ctrl:return»  «glob:global»", "#df6a5f"],
+  ["Functions", "#86aed0", "«fn:summarize»«punc:()»  «fn:total»«punc:()»", "#86aed0"],
+  ["Strings", "#aab47e", "«str:\"rocks\"»  «doc:\"\"\"docs\"\"\"»", "#aab47e"],
+  ["Comments", "#7c7f88", "«cmt:# ten percent off»", "#7c7f88"],
+  ["Builtins & types", "#6fb5a8", "«bi:len»  «type:int»  «type:str»  «magic:__name__»", "#6fb5a8"],
+  ["Classes", "#e6c08e", "«clsdef:Ticket»  «cls:Ticket»«punc:()»", "#e6c08e"],
+  ["Decorators & escapes", "#c77926", "«dec:@dataclass»  «fb:{»t«fb:}»  «esc:\\n»", "#c77926"],
+  ["Numbers", "#b19cd4", "«num:8500»  «num:0.9»", "#b19cd4"],
+  ["Constants", "#de8a62", "«const:True»  «const:None»  «caps:MAX_RETRIES»", "#de8a62"],
+  ["self / cls", "#c4919e", "«self:self»«punc:.»«attr:seats»", "#c4919e"],
+  ["Names", "#e2d8c9", "data  lines  «param:price»", "#e2d8c9"],
+];
+const SURFACES = [
+  ["Current line", "#3a3b3c", "#3a3b3c55"],
+  ["Selection", "#a0522d", "#a0522d66"],
+];
+
+function el(tag, cls, text) {
+  const n = document.createElement(tag);
+  if (cls) n.className = cls;
+  if (text != null) n.textContent = text;
+  return n;
+}
+
+function tokens(line, into) {
+  const re = /«(!?)(\w+):([\s\S]*?)»/g;
+  let last = 0, sel = null, m;
+  const add = (kind, text, selected) => {
+    const [color, flag] = STYLE[kind];
+    const s = el("span", null, text);
+    s.style.color = color;
+    if (flag === "b") s.style.fontWeight = "700";
+    if (flag === "i") s.style.fontStyle = "italic";
+    if (selected) { sel = sel || into.appendChild(el("span", "sel")); sel.append(s); }
+    else { sel = null; into.append(s); }
+  };
+  while ((m = re.exec(line))) {
+    if (m.index > last) add("v", line.slice(last, m.index), false);
+    add(m[2], m[3], m[1] === "!");
+    last = re.lastIndex;
+  }
+  if (last < line.length) add("v", line.slice(last), false);
+}
+
+const code = document.getElementById("code");
+SRC.forEach((line, i) => {
+  const row = el("div", "ln" + (i + 1 === CURSOR_LINE ? " cur" : ""));
+  row.append(el("span", "gutter", String(i + 1)));
+  const src = el("span");
+  tokens(line, src);
+  if (i + 1 === CURSOR_LINE) src.append(el("span", "caret"));
+  if (!line) src.append(" ");
+  row.append(src);
+  code.append(row);
+});
+
+const legend = document.getElementById("legend");
+LEGEND.forEach(([role, chip, sample, hex]) => {
+  const row = el("div", "row");
+  const c = el("span", "chip"); c.style.background = chip;
+  const s = el("span", "sample"); tokens(sample, s);
+  row.append(c, el("span", "role", role), s, el("span", "hex", hex));
+  legend.append(row);
+});
+SURFACES.forEach(([role, chip, hex], i) => {
+  const row = el("div", "row" + (i === 0 ? " group" : ""));
+  const c = el("span", "chip"); c.style.background = chip;
+  const s = el("span", "sample");
+  const bar = el("span", null, i === 0 ? "  if self.seats >= 10:  " : "self.seats * price");
+  bar.style.background = hex;
+  bar.style.color = "#e2d8c9";
+  s.append(bar);
+  row.append(c, el("span", "role", role), s, el("span", "hex", hex));
+  legend.append(row);
+});
+</script>
+</body>
+</html>

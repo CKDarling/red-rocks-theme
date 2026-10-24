@@ -1,0 +1,8 @@
+.vscode/**
+examples/**
+.gitignore
+*.vsix
+scripts/**
+.github/**
+images/showcase.png
+images/swatches/**

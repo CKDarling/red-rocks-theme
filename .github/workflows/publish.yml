@@ -1,0 +1,66 @@
+# Publishes the theme when a version tag is pushed:
+#   npm version patch && git push --follow-tags
+#
+# Secrets (Settings → Secrets and variables → Actions, or `gh secret set NAME`):
+#   VSCE_PAT  Azure DevOps token with Marketplace → Manage scope (required)
+#   OVSX_PAT  open-vsx.org token (optional; Open VSX is skipped without it)
+
+name: Publish
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check tag matches package.json version
+        id: version
+        run: |
+          v=$(node -p "require('./package.json').version")
+          if [ "v$v" != "$GITHUB_REF_NAME" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME does not match package.json version $v"
+            exit 1
+          fi
+          echo "vsix=red-rocks-$v.vsix" >> "$GITHUB_OUTPUT"
+
+      - name: Package
+        run: npx --yes @vscode/vsce@4.0.0 package --out "${{ steps.version.outputs.vsix }}"
+
+      - name: Publish to VS Code Marketplace
+        env:
+          VSCE_PAT: ${{ secrets.VSCE_PAT }}
+        run: |
+          if [ -z "$VSCE_PAT" ]; then
+            echo "::error::VSCE_PAT secret is not set"
+            exit 1
+          fi
+          npx --yes @vscode/vsce@4.0.0 publish --packagePath "${{ steps.version.outputs.vsix }}" --pat "$VSCE_PAT"
+
+      - name: Publish to Open VSX
+        env:
+          OVSX_PAT: ${{ secrets.OVSX_PAT }}
+        run: |
+          if [ -z "$OVSX_PAT" ]; then
+            echo "OVSX_PAT not set; skipping Open VSX"
+            exit 0
+          fi
+          publisher=$(node -p "require('./package.json').publisher")
+          # Fails harmlessly once the namespace exists
+          npx --yes ovsx@1.2.0 create-namespace "$publisher" --pat "$OVSX_PAT" || true
+          npx --yes ovsx@1.2.0 publish "${{ steps.version.outputs.vsix }}" --pat "$OVSX_PAT"
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" "${{ steps.version.outputs.vsix }}" --title "$GITHUB_REF_NAME" --generate-notes

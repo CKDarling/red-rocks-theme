@@ -1,0 +1,40 @@
+{
+  "name": "red-rocks",
+  "displayName": "Red Rocks",
+  "description": "A dark theme built from sienna, crimson, and bronze on a night-sky ink — inspired by the Ares Enyo palette.",
+  "version": "0.1.0",
+  "publisher": "CKinkadeDarling",
+  "license": "MIT",
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#16171f",
+    "theme": "dark"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "dark",
+    "red",
+    "warm",
+    "desert",
+    "python",
+    "sandstone"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Red Rocks",
+        "uiTheme": "vs-dark",
+        "path": "./themes/red-rocks-color-theme.json"
+      }
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CKDarling/red-rocks-theme"
+  }
+}
