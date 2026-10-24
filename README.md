@@ -1,10 +1,28 @@
 # Red Rocks — VS Code Theme
 
-Southern Utah after dark. Built from the **Ares Enyo** color palette (sienna, crimson and bronze on midnight ink), with syntax colors taken from the desert: Wingate rust, Navajo sandstone, sagebrush, juniper and a washed-out big sky.
+Desert dusk, with warm stone still glowing after sundown. Rust, sandstone and sagebrush stand out against a midnight sky, with a washed-out blue for the distance. It feels calm, a little wild and wide open.
 
 ![Red Rocks in VS Code, showing a Python file next to a legend of what each color is used for](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/showcase.png)
 
+## Forty-Seven Arms
+
+![A sunflower seed head lighting up its 47 spiral arms one at a time, in rust and sandstone](images/count-arms.gif)
+
+Most sunflowers grow their seeds in Fibonacci spirals. A few follow the Lucas sequence instead (2, 1, 3, 4, 7, 11, 18, 29, 47), turning each seed 99.50° past the last, and show 47 spiral arms. 47 is also a safe prime: 47 = 2 × 23 + 1, and 23 is prime. [`examples/sunflower.py`](examples/sunflower.py) works this out, and [`examples/count_arms.py`](examples/count_arms.py) draws the same animation in VS Code's terminal using the theme's ANSI colors.
+
+## Install
+
+Search for **Red Rocks** in the Extensions view, or run:
+
+```bash
+code --install-extension CKinkadeDarling.red-rocks
+```
+
+Then press `Cmd+K Cmd+T` (`Ctrl+K Ctrl+T` on Windows/Linux) and pick **Red Rocks**.
+
 ## Palette
+
+Inspired by [Ares Enyo](https://www.color-hex.com/color-palette/1086103) by planet_placid
 
 | Swatch                                                                                                 | Hex       | Role                                                                         |
 | ------------------------------------------------------------------------------------------------------ | --------- | ---------------------------------------------------------------------------- |
@@ -40,23 +58,3 @@ Decorators, f-string braces, escape sequences and HTML attributes use bronze `#c
 | ![8998a1](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/8998a1.png) | `#8998a1` | Modified          |
 | ![bd5a4c](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/bd5a4c.png) | `#bd5a4c` | Deleted           |
 | ![9b728e](https://raw.githubusercontent.com/CKDarling/red-rocks-theme/main/images/swatches/9b728e.png) | `#9b728e` | Conflicts         |
-
-## Forty-Seven Arms
-
-![A sunflower seed head lighting up its 47 spiral arms one at a time, in rust and sandstone](images/count-arms.gif)
-
-Most sunflowers grow their seeds in Fibonacci spirals. A few follow the Lucas sequence instead (2, 1, 3, 4, 7, 11, 18, 29, 47), turning each seed 99.50° past the last, and show 47 spiral arms. 47 is also a safe prime: 47 = 2 × 23 + 1, and 23 is prime. [`examples/sunflower.py`](examples/sunflower.py) works this out, and [`examples/count_arms.py`](examples/count_arms.py) draws the same animation in VS Code's terminal using the theme's ANSI colors.
-
-## Install
-
-Search for **Red Rocks** in the Extensions view, or run:
-
-```bash
-code --install-extension CKinkadeDarling.red-rocks
-```
-
-Then press `Cmd+K Cmd+T` (`Ctrl+K Ctrl+T` on Windows/Linux) and pick **Red Rocks**.
-
-## Source
-
-Palette: [Ares Enyo](https://www.color-hex.com/color-palette/1086103) by planet_placid
